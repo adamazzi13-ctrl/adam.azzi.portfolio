@@ -1305,11 +1305,20 @@ PC Client (FileZilla) ←─── FTP Port 21 ───→ Raspberry Pi (ProFTP
 <div class="citm fi"><div class="cico2">&#128101;</div><p class="clbl">LinkedIn</p><p class="cval"><a href="https://www.linkedin.com/in/adam-azzi-034208329/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">linkedin.com/in/adam-azzi</a></p></div>
 </div>
 <form class="cform fi" id="cform">
-<div class="fg"><label>Votre Nom</label><input type="text" name="name" required></div>
-<div class="fg"><label>Votre Email</label><input type="email" name="email" required></div>
-<div class="fg"><label>Sujet</label><input type="text" name="subject" required></div>
-<div class="fg"><label>Votre Message</label><textarea name="message" required></textarea></div>
-<button type="submit" class="sbtn">Envoyer le Message</button>
+  <div class="fg"><label>Votre Nom</label><input type="text" name="name" placeholder="Jean Dupont" required></div>
+  <div class="fg"><label>Votre Email</label><input type="email" name="email" placeholder="jean@example.com" required></div>
+  <div class="fg"><label>Sujet</label><input type="text" name="subject" placeholder="Votre sujet..." required></div>
+  <div class="fg"><label>Votre Message</label><textarea name="message" placeholder="Bonjour Adam, ..." required></textarea></div>
+  <button type="submit" class="sbtn" id="sbtn-main">
+    <span id="sbtn-text">✉️ Envoyer le Message</span>
+    <span id="sbtn-loader" style="display:none;">⏳ Envoi en cours...</span>
+  </button>
+  <div id="form-success" style="display:none;margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(16,185,129,0.1);border:2px solid rgba(16,185,129,0.4);border-radius:12px;color:#059669;font-weight:600;font-size:1.05rem;text-align:center;">
+    ✅ Message envoyé avec succès ! Je vous répondrai dès que possible.
+  </div>
+  <div id="form-error" style="display:none;margin-top:1.5rem;padding:1.2rem 1.5rem;background:rgba(239,68,68,0.1);border:2px solid rgba(239,68,68,0.3);border-radius:12px;color:#dc2626;font-weight:600;font-size:1.05rem;text-align:center;">
+    ❌ Une erreur est survenue. Veuillez réessayer ou me contacter directement par email.
+  </div>
 </form>
 </div></section>
 
@@ -1377,7 +1386,41 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
         if(target){ target.scrollIntoView({behavior:'smooth'}); }
     });
 });
+// ── FORMULAIRE FORMSPREE ──
+document.getElementById('cform').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  var btnText = document.getElementById('sbtn-text');
+  var btnLoad = document.getElementById('sbtn-loader');
+  var btnMain = document.getElementById('sbtn-main');
+  var success = document.getElementById('form-success');
+  var error   = document.getElementById('form-error');
 
+  success.style.display = 'none';
+  error.style.display   = 'none';
+  btnText.style.display = 'none';
+  btnLoad.style.display = 'inline';
+  btnMain.disabled      = true;
+
+  try {
+    var response = await fetch('https://formspree.io/f/xpqopznr', {
+      method: 'POST',
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      success.style.display = 'block';
+      this.reset();
+    } else {
+      error.style.display = 'block';
+    }
+  } catch(err) {
+    error.style.display = 'block';
+  }
+
+  btnText.style.display = 'inline';
+  btnLoad.style.display = 'none';
+  btnMain.disabled      = false;
+});
 // ── FADE-IN : tous les .fi visibles immédiatement ──
 document.querySelectorAll('.fi').forEach(function(el){
     el.classList.add('visible');
