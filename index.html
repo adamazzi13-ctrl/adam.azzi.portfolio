@@ -1,0 +1,1388 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Portfolio - Adam AZZI | BTS SIO SISR</title>
+<link rel='preconnect' href='https://fonts.googleapis.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+<link href='https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap' rel='stylesheet'>
+<style>
+:root{--primary:#f8fafc;--secondary:#ffffff;--accent:#2563eb;--text:#0f172a;--text-light:#1e293b;--text-white:#020617;--g1:linear-gradient(135deg,#93c5fd 0%,#2563eb 100%);--g2:linear-gradient(135deg,#67e8f9 0%,#0ea5e9 100%);--g3:linear-gradient(135deg,#2563eb 0%,#1d4ed8 100%);}
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:var(--primary);color:var(--text);line-height:1.6;overflow-x:hidden;font-size:17px;}
+nav{position:fixed;top:0;width:100%;background:rgba(248,250,252,0.97);backdrop-filter:blur(10px);z-index:1000;padding:1.2rem 0;border-bottom:1px solid rgba(37,99,235,0.15);box-shadow:0 2px 15px rgba(37,99,235,0.08);}
+nav ul{display:flex;justify-content:center;align-items:center;list-style:none;gap:2rem;flex-wrap:wrap;padding:0 2rem;}
+nav a{color:var(--text-light);text-decoration:none;font-weight:500;font-size:0.95rem;transition:all 0.3s;position:relative;}
+nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--accent);transition:width 0.3s;}
+nav a:hover{color:var(--accent);}nav a:hover::after{width:100%;}
+.project-page{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:var(--primary);z-index:2000;overflow-y:auto;padding:2rem;animation:fadeInPage 0.4s ease;}
+.project-page.active{display:block;}
+@keyframes fadeInPage{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.ppi{max-width:1000px;margin:0 auto;padding-top:2rem;}
+.back-btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.8rem;background:transparent;color:var(--accent);border:2px solid var(--accent);border-radius:8px;cursor:pointer;font-family:'Poppins',sans-serif;font-size:1.05rem;font-weight:600;transition:all 0.3s;margin-bottom:2.5rem;text-decoration:none;}
+.back-btn:hover{background:var(--accent);color:var(--primary);}
+.project-page h1{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,3rem);color:var(--text-white);margin-bottom:0.5rem;}
+.psub{color:var(--accent);font-size:1.25rem;margin-bottom:2rem;font-weight:600;}
+.piz{width:100%;background:rgba(37,99,235,0.05);border:2px solid rgba(37,99,235,0.2);border-radius:15px;min-height:250px;display:flex;align-items:center;justify-content:center;margin-bottom:2rem;overflow:hidden;}
+.piz img{max-width:100%;height:auto;border-radius:13px;}
+.piz .pt{color:rgba(37,99,235,0.6);font-size:1rem;text-align:center;padding:2rem;}
+.ps{background:var(--secondary);border-radius:15px;padding:2rem;margin-bottom:1.5rem;border:1px solid rgba(37,99,235,0.15);}
+.ps h2{color:var(--accent);font-size:1.5rem;margin-bottom:1rem;}
+.ps p,.ps li{color:var(--text);line-height:1.9;font-size:1.08rem;}
+.ps ul{margin-left:1.5rem;margin-top:1rem;}
+.ps strong{color:var(--text-white);}
+.tt{display:flex;flex-wrap:wrap;gap:0.8rem;margin-top:0.5rem;}
+.t{background:rgba(37,99,235,0.1);color:var(--accent);padding:0.5rem 1.2rem;border-radius:25px;font-size:0.95rem;font-weight:600;border:1.5px solid rgba(37,99,235,0.3);}
+.pig{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1rem;margin-top:1.5rem;}
+.pig .piz{min-height:200px;}
+.hero{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:5rem 2rem 2rem;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-50%;right:-10%;width:800px;height:800px;background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);animation:float 20s ease-in-out infinite;}
+@keyframes float{0%,100%{transform:translate(0,0) rotate(0deg);}50%{transform:translate(-50px,50px) rotate(10deg);}}
+.hero-content{max-width:1200px;text-align:center;position:relative;z-index:1;}
+.hero-title{font-family:'Montserrat',sans-serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:800;color:var(--text-white);margin-bottom:0.8rem;animation:su 1s ease-out;}
+.hero-sub{font-size:clamp(1.2rem,3vw,1.9rem);color:var(--accent);margin-bottom:1.2rem;font-weight:600;animation:su 1s ease-out 0.2s backwards;}
+.hero-desc{font-size:clamp(1.05rem,2vw,1.25rem);color:var(--text);max-width:700px;margin:0 auto 2.5rem;line-height:1.8;animation:su 1s ease-out 0.4s backwards;}
+@keyframes su{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+.cta{display:inline-block;padding:1rem 2.5rem;background:transparent;color:var(--accent);border:2px solid var(--accent);border-radius:5px;text-decoration:none;font-weight:600;transition:all 0.3s;position:relative;overflow:hidden;cursor:pointer;font-family:'Poppins',sans-serif;font-size:1.05rem;animation:su 1s ease-out 0.6s backwards;}
+.cta::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--accent);transition:left 0.3s;z-index:-1;}
+.cta:hover{color:var(--primary);}.cta:hover::before{left:0;}
+section{padding:5rem 2rem;max-width:1400px;margin:0 auto;}
+.stitle{font-family:'Montserrat',sans-serif;font-size:clamp(2rem,5vw,3rem);color:var(--text-white);margin-bottom:3rem;text-align:center;position:relative;display:inline-block;width:100%;}
+.stitle::after{content:'';position:absolute;bottom:-15px;left:50%;transform:translateX(-50%);width:100px;height:4px;background:var(--g3);border-radius:2px;}
+.about-content{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:4rem;}
+.atext{color:var(--text);font-size:1.12rem;line-height:1.9;}
+.atext p{margin-bottom:1.5rem;}.atext strong{color:var(--accent);font-weight:600;}
+.cvwrap{position:relative;display:inline-block;margin-top:0.5rem;}
+.cvwrap .cvtt{position:absolute;bottom:calc(100% + 10px);left:50%;transform:translateX(-50%) scale(0.85);background:#1e293b;color:#fff;font-size:0.82rem;font-weight:700;padding:0.45rem 1rem;border-radius:20px;white-space:nowrap;pointer-events:none;opacity:0;transition:all 0.25s;letter-spacing:0.06em;text-transform:uppercase;z-index:10;}
+.cvwrap .cvtt::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#1e293b;}
+.cvwrap:hover .cvtt{opacity:1;transform:translateX(-50%) scale(1);}
+.cvbtn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;background:transparent;color:var(--accent);border:2px solid var(--accent);border-radius:8px;text-decoration:none;font-weight:600;transition:all 0.3s;position:relative;overflow:hidden;font-size:1.05rem;}
+.cvbtn::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:var(--accent);transition:left 0.3s;z-index:-1;}
+.cvbtn:hover{color:var(--primary);}.cvbtn:hover::before{left:0;}
+.pcard{background:var(--secondary);border-radius:20px;padding:3rem;box-shadow:0 20px 60px rgba(0,0,0,0.08);border:1px solid rgba(37,99,235,0.15);position:relative;overflow:hidden;}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--g3);}
+.pinfo{display:flex;flex-direction:column;gap:1rem;}
+.iitem{display:flex;align-items:center;gap:1rem;padding:0.8rem;background:rgba(37,99,235,0.05);border-radius:10px;transition:all 0.3s;}
+.iitem:hover{background:rgba(37,99,235,0.1);transform:translateX(10px);}
+.iico{width:40px;height:40px;background:var(--g3);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.ilbl{font-weight:600;color:var(--text-light);min-width:100px;font-size:1rem;}
+.ival{color:var(--text);font-size:1rem;}
+.btsinfo{background:var(--secondary);border-radius:20px;padding:3rem;margin-top:3rem;border:1px solid rgba(37,99,235,0.15);}
+.btsinfo h3{color:var(--accent);font-size:1.9rem;margin-bottom:1.5rem;}
+.btsinfo p{color:var(--text);font-size:1.12rem;line-height:1.9;margin-bottom:1.5rem;}
+.opth{background:rgba(37,99,235,0.08);border-left:4px solid var(--accent);padding:1.5rem;border-radius:10px;margin-top:2rem;}
+.opth h4{color:var(--text-white);font-size:1.55rem;margin-bottom:1rem;}
+.altb{background:rgba(37,99,235,0.07);border:1px solid rgba(37,99,235,0.2);border-radius:15px;padding:2rem;margin-top:2rem;}
+.altb h4{color:var(--text-white);font-size:1.35rem;margin-bottom:1rem;}
+.altb p{color:var(--text);line-height:1.9;margin-bottom:1rem;font-size:1.08rem;}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;margin-top:3rem;}
+.scat{background:linear-gradient(135deg,var(--secondary) 0%,rgba(248,250,252,0.95) 100%);border-radius:15px;padding:2rem;border:1px solid rgba(37,99,235,0.12);transition:all 0.4s;position:relative;overflow:hidden;}
+.scat::before{content:'';position:absolute;top:0;left:0;width:4px;height:0;background:var(--g3);transition:height 0.4s;}
+.scat:hover::before{height:100%;}
+.scat:hover{transform:translateY(-8px);box-shadow:0 15px 35px rgba(37,99,235,0.15);border-color:rgba(37,99,235,0.25);}
+.scat h3{color:var(--text-white);font-size:1.35rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.7rem;padding-bottom:1rem;border-bottom:2px solid rgba(37,99,235,0.1);}
+.scat h3::before{content:'';width:10px;height:10px;background:var(--accent);border-radius:50%;flex-shrink:0;box-shadow:0 0 10px rgba(37,99,235,0.4);}
+.scat ul{list-style:none;}
+.scat ul li{color:var(--text);font-size:1.05rem;line-height:2.5;padding-left:1.5rem;position:relative;transition:all 0.2s;}
+.scat ul li::before{content:"\25B9";position:absolute;left:0;color:var(--accent);font-weight:bold;}
+.scat ul li:hover{color:var(--accent);transform:translateX(5px);}
+.tl{position:relative;margin-top:4rem;padding-left:2rem;}
+.tl::before{content:'';position:absolute;left:0;top:0;height:100%;width:3px;background:var(--g3);}
+.tli{position:relative;margin-bottom:3rem;padding-left:3rem;}
+.tli::before{content:'';position:absolute;left:-8px;top:0;width:18px;height:18px;background:var(--accent);border-radius:50%;border:4px solid var(--primary);}
+.tlc{background:var(--secondary);padding:2rem;border-radius:15px;border:1px solid rgba(37,99,235,0.15);transition:all 0.3s;}
+.tlc:hover{transform:translateX(10px);box-shadow:0 10px 30px rgba(37,99,235,0.15);}
+.tlt{color:var(--text-white);font-size:1.55rem;margin-bottom:0.5rem;font-weight:600;}
+.tls{color:var(--accent);font-size:1.15rem;margin-bottom:0.5rem;}
+.tld{color:var(--text);font-size:1rem;margin-bottom:1rem;}
+.tlde{color:var(--text);line-height:1.8;font-size:1.08rem;}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:2.5rem;margin-top:3rem;}
+.prc{background:var(--secondary);border-radius:20px;overflow:hidden;border:1px solid rgba(37,99,235,0.15);transition:all 0.3s;position:relative;cursor:pointer;z-index:1;box-shadow:0 2px 15px rgba(37,99,235,0.05);}
+.prc::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;background:var(--g2);transform:scaleX(0);transition:transform 0.3s;}
+.prc:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(37,99,235,0.2);}
+.prc:hover::before{transform:scaleX(1);}
+.primg{width:100%;height:220px;background:linear-gradient(135deg,rgba(37,99,235,0.1),rgba(37,99,235,0.05));display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--accent);overflow:hidden;}
+.primg img{width:100%;height:100%;object-fit:contain;padding:1.5rem;}
+.prco{padding:2rem;}
+.prt{color:var(--text-white);font-size:1.45rem;margin-bottom:0.5rem;font-weight:600;}
+.prte{color:var(--accent);font-size:0.95rem;margin-bottom:0.8rem;font-weight:500;}
+.prde{color:var(--text);line-height:1.8;margin-bottom:1.2rem;font-size:1rem;}
+.prob{pointer-events:none;display:inline-flex;align-items:center;gap:0.5rem;padding:0.6rem 1.5rem;background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;font-size:0.95rem;font-weight:600;transition:all 0.3s;cursor:pointer;font-family:'Poppins',sans-serif;}
+.prob:hover{background:var(--accent);color:var(--primary);}
+.cgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;max-width:1200px;margin-left:auto;margin-right:auto;}
+@media(max-width:900px){.cgrid{grid-template-columns:1fr;}}
+.ccard{background:var(--secondary);border-radius:20px;padding:2.5rem;text-align:center;border:1px solid rgba(37,99,235,0.15);transition:all 0.3s;position:relative;overflow:hidden;box-shadow:0 2px 15px rgba(37,99,235,0.05);}
+.ccard::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(37,99,235,0.05),transparent);opacity:0;transition:opacity 0.3s;}
+.ccard:hover{transform:scale(1.04);}.ccard:hover::before{opacity:1;}
+.cbadge{position:absolute;top:16px;right:16px;background:var(--g3);color:#fff;font-size:0.75rem;font-weight:700;padding:0.35rem 0.85rem;border-radius:20px;letter-spacing:0.05em;text-transform:uppercase;box-shadow:0 4px 12px rgba(37,99,235,0.3);z-index:2;}
+.cico{width:80px;height:80px;background:var(--g1);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1.5rem;position:relative;z-index:1;}
+.cname{color:var(--text-white);font-size:1.55rem;font-weight:600;margin-bottom:0.5rem;position:relative;z-index:1;}
+.ciss{color:var(--accent);font-size:1.05rem;position:relative;z-index:1;}
+.vblock{background:var(--secondary);border-radius:15px;padding:2.5rem;margin-bottom:2rem;border:1px solid rgba(37,99,235,0.15);}
+.vblock h3{color:var(--accent);font-size:1.7rem;margin-bottom:1.5rem;}
+.vblock h4{color:var(--text-white);font-size:1.35rem;margin-top:1.5rem;margin-bottom:1rem;}
+.vblock p{color:var(--text);line-height:1.9;margin-bottom:1rem;font-size:1.08rem;}
+.vblock ul{margin-left:2rem;margin-bottom:1rem;}
+.vblock li{color:var(--text);line-height:2;margin-bottom:0.5rem;font-size:1.08rem;}
+.vsrc{display:inline-block;color:var(--accent);text-decoration:none;margin-top:0.5rem;font-weight:500;transition:all 0.3s;}
+.vsrc:hover{text-decoration:underline;transform:translateX(5px);}
+.cco{max-width:800px;margin:3rem auto 0;}
+.cinfo{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2rem;margin-bottom:3rem;}
+.citm{background:var(--secondary);padding:2rem;border-radius:15px;text-align:center;border:1px solid rgba(37,99,235,0.15);transition:all 0.3s;}
+.citm:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(37,99,235,0.15);}
+.cico2{width:60px;height:60px;background:var(--g3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem;}
+.clbl{color:var(--text);font-size:1rem;margin-bottom:0.5rem;}
+.cval{color:var(--text-white);font-size:1.08rem;font-weight:500;}
+.cform{background:var(--secondary);padding:3rem;border-radius:20px;border:1px solid rgba(37,99,235,0.15);}
+.fg{margin-bottom:1.5rem;}
+.fg label{display:block;color:var(--text-light);margin-bottom:0.5rem;font-weight:500;font-size:1.05rem;}
+.fg input,.fg textarea{width:100%;padding:1rem;background:rgba(37,99,235,0.05);border:1px solid rgba(37,99,235,0.2);border-radius:10px;color:var(--text-white);font-family:'Poppins',sans-serif;font-size:1.05rem;transition:all 0.3s;}
+.fg input:focus,.fg textarea:focus{outline:none;border-color:var(--accent);background:rgba(37,99,235,0.1);}
+.fg textarea{resize:vertical;min-height:150px;}
+.sbtn{width:100%;padding:1.2rem;background:var(--g3);color:var(--primary);border:none;border-radius:10px;font-size:1.12rem;font-weight:600;cursor:pointer;transition:all 0.3s;font-family:'Poppins',sans-serif;}
+.sbtn:hover{transform:translateY(-3px);box-shadow:0 10px 30px rgba(37,99,235,0.3);}
+.mov{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:3000;justify-content:center;align-items:center;}
+.mov.active{display:flex;}
+.mbox{background:var(--secondary);border-radius:20px;padding:3rem;max-width:700px;width:90%;max-height:80vh;overflow-y:auto;position:relative;border:1px solid rgba(37,99,235,0.2);}
+.mbox h2{color:var(--accent);font-size:1.9rem;margin-bottom:1.5rem;}
+.mbox p{color:var(--text);line-height:1.9;margin-bottom:1rem;font-size:1.05rem;}
+.mbox strong{color:var(--text-white);}
+.mcl{position:absolute;top:1rem;right:1.5rem;background:none;border:none;color:var(--accent);font-size:2rem;cursor:pointer;font-weight:700;}
+footer{background:var(--secondary);padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(37,99,235,0.15);margin-top:4rem;}
+footer p{color:var(--text);font-size:1rem;}footer strong{color:var(--accent);}
+.fmbtn{margin-top:1rem;padding:0.6rem 1.8rem;background:transparent;color:var(--accent);border:1.5px solid var(--accent);border-radius:6px;font-size:0.95rem;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;transition:all 0.3s;}
+.fmbtn:hover{background:var(--accent);color:var(--primary);}
+@media(max-width:768px){.about-content{grid-template-columns:1fr;}nav ul{gap:0.8rem;}section{padding:4rem 1.5rem;}.pgrid{grid-template-columns:1fr;}.tl{padding-left:1rem;}.tli{padding-left:2rem;}.sgrid{grid-template-columns:1fr;}}
+.fi{opacity:1;}.fi.visible{opacity:1;}
+
+/* ── TOOLTIPS GLOBAUX ── */
+.tip-wrap { position: relative; display: inline-block; }
+.tip-wrap .tip {
+    pointer-events: none;
+    position: absolute; bottom: calc(100% + 10px); left: 50%;
+    transform: translateX(-50%) scale(0.85);
+    background: #1e293b; color: #fff;
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.4rem 0.9rem; border-radius: 16px;
+    white-space: nowrap; pointer-events: none;
+    opacity: 0; transition: all 0.22s ease;
+    letter-spacing: 0.05em; z-index: 999;
+}
+.tip-wrap .tip::after {
+    content: ''; position: absolute; top: 100%; left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: #1e293b;
+}
+.tip-wrap:hover .tip { opacity: 1; transform: translateX(-50%) scale(1); }
+
+/* Bouton CV avec badge haut-droite comme certifs */
+.cv-page-badge {
+    position: fixed; top: 20px; right: 20px; z-index: 9999;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white; font-size: 0.85rem; font-weight: 700;
+    padding: 0.5rem 1.2rem; border-radius: 20px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+    animation: slideInRight 0.5s ease-out;
+}
+@keyframes slideInRight { from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);} }
+
+/* ── COMPÉTENCES STYLE CARTE ── */
+.comp-section {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(37,99,235,0.15);
+    box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+}
+.comp-section-header {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 2px solid rgba(37,99,235,0.15);
+}
+.comp-section-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+}
+.comp-section-title {
+    color: #0f172a;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+.comp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 1rem;
+}
+.comp-card {
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 1.3rem;
+    border: 1px solid rgba(37,99,235,0.15);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+.comp-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(37,99,235,0.5);
+    box-shadow: 0 8px 25px rgba(37,99,235,0.15);
+    background: #e8f0ff;
+}
+.comp-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+.comp-logo {
+    width: 36px; height: 36px;
+    object-fit: contain;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+.comp-logo-emoji {
+    width: 36px; height: 36px;
+    background: rgba(37,99,235,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; flex-shrink: 0;
+}
+.comp-name {
+    color: #0f172a;
+    font-weight: 700;
+    font-size: 1rem;
+}
+.comp-desc {
+    color: #475569;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+.comp-intro {
+    text-align: center;
+    color: #475569;
+    font-size: 1.05rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+}
+
+/* ── PARCOURS DASHBOARD STYLE ── */
+.parc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.8rem;
+    margin-top: 3rem;
+}
+.parc-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(37,99,235,0.15);
+    box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.parc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+.parc-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 40px rgba(37,99,235,0.18);
+    border-color: rgba(37,99,235,0.35);
+}
+.parc-card.current::before {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+.parc-card.current {
+    border-color: rgba(16,185,129,0.3);
+}
+.parc-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+.parc-icon {
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(37,99,235,0.3);
+}
+.parc-card.current .parc-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+    box-shadow: 0 4px 15px rgba(16,185,129,0.3);
+}
+.parc-title-block { flex: 1; }
+.parc-title {
+    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+}
+.parc-lieu {
+    color: #2563eb;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+.parc-card.current .parc-lieu { color: #059669; }
+.parc-badge-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(37,99,235,0.08);
+    color: #2563eb;
+    font-size: 0.82rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    margin-bottom: 1.2rem;
+    border: 1px solid rgba(37,99,235,0.2);
+}
+.parc-card.current .parc-badge-date {
+    background: rgba(16,185,129,0.08);
+    color: #059669;
+    border-color: rgba(16,185,129,0.2);
+}
+.parc-badge-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #0f172a;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.parc-desc {
+    color: #475569;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+.parc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+}
+.parc-tag {
+    background: rgba(37,99,235,0.07);
+    color: #2563eb;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(37,99,235,0.15);
+}
+.parc-card.current .parc-tag {
+    background: rgba(16,185,129,0.07);
+    color: #059669;
+    border-color: rgba(16,185,129,0.15);
+}
+.parc-now-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    margin-right: 0.3rem;
+    animation: pulse-dot 1.5s infinite;
+}
+@keyframes pulse-dot {
+    0%,100%{opacity:1;transform:scale(1);}
+    50%{opacity:0.5;transform:scale(1.4);}
+}
+@media(max-width:768px){ .parc-grid{grid-template-columns:1fr;} }
+
+.parc-card.current::before { background: linear-gradient(135deg, #10b981, #059669); }
+.parc-card.current { border-color: rgba(16,185,129,0.3); }
+.parc-card.current .parc-icon { background: linear-gradient(135deg, #10b981, #059669); box-shadow: 0 4px 15px rgba(16,185,129,0.3); }
+.parc-card.current .parc-lieu { color: #059669; }
+.parc-card.current .parc-badge-date { background: rgba(16,185,129,0.08); color: #059669; border-color: rgba(16,185,129,0.2); }
+.parc-now-dot { display:inline-block; width:8px; height:8px; background:#10b981; border-radius:50%; margin-right:0.4rem; animation:pulse-dot 1.5s infinite; }
+</style>
+</head>
+<body>
+
+<!-- PAGE LOGESACA -->
+<div class="project-page" id="page-logesaca">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-logesaca')">&#8592; Retour au Portfolio</button>
+<h1>Projet LogesAcad 🏢</h1>
+<p class="psub">Infrastructure Réseau & Services Informatiques — BTS SIO SISR</p>
+<div class="piz" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;"><img src="images/logesacad_main/logesacad2.png" alt="Schéma 1" style="max-width:48%;max-height:320px;object-fit:contain;border-radius:12px;"><img src="images/logesacad_main/logesacad3.png" alt="Schéma 2" style="max-width:48%;max-height:320px;object-fit:contain;border-radius:12px;"></div>
+<div class="ps"><h2>📌 Présentation du projet</h2>
+<p>LogesAcad est un projet réalisé au <strong>Lycée Parc des Loges</strong> consistant à concevoir et administrer une <strong>infrastructure réseau complète</strong> pour un établissement scolaire fictif. L'objectif était de simuler un environnement professionnel réaliste avec gestion des utilisateurs, ressources partagées, sécurité et services réseau — à la fois sur environnement <strong>Windows Server</strong> et <strong>Linux virtualisé</strong>.</p></div>
+<div class="ps"><h2>🎯 Contexte & Objectifs</h2>
+<ul>
+<li>Installer et configurer <strong>Windows Server 2019</strong> et des VM <strong>Linux Debian</strong></li>
+<li>Mettre en place un <strong>Active Directory</strong> (OU, utilisateurs, groupes)</li>
+<li>Configurer les services réseau : <strong>DHCP, DNS, GPO</strong></li>
+<li>Déployer une stack <strong>LAMP</strong> (Apache, PHP, MariaDB) et un service <strong>FTP</strong></li>
+<li>Sécuriser l'infrastructure et documenter les procédures</li>
+</ul></div>
+<div class="ps"><h2>🛠️ Technologies utilisées</h2>
+<div class="tt"><span class="t">Windows Server 2019</span><span class="t">Active Directory</span><span class="t">DHCP / DNS</span><span class="t">GPO</span><span class="t">PowerShell</span><span class="t">VirtualBox</span><span class="t">Linux Debian</span><span class="t">Apache</span><span class="t">PHP</span><span class="t">MariaDB</span><span class="t">ProFTPD</span></div></div>
+<div class="ps"><h2>⚙️ Réalisation & Missions</h2>
+<ul>
+<li><strong>Windows Server :</strong> Installation et configuration de Windows Server 2019 en VM, mise en place de l'AD avec OU/utilisateurs/groupes, déploiement DHCP/DNS, GPO pour gestion centralisée, partages réseau NTFS, politique de mots de passe.</li>
+<li><strong>Infrastructure Linux :</strong> Création des VM sous VirtualBox, configuration réseau inter-VM, installation stack LAMP (Apache + PHP + MariaDB), déploiement du site dans <code>/var/www/html</code>.</li>
+<li><strong>Service FTP :</strong> Installation et configuration ProFTPD, gestion des utilisateurs, tests de transfert.</li>
+<li><strong>Automatisation :</strong> Utilisation de <strong>PowerShell</strong> pour automatiser la création de comptes et la gestion des GPO.</li>
+<li><strong>Documentation :</strong> Schémas réseau, procédures d'installation, guides d'administration.</li>
+</ul></div>
+<div class="ps"><h2>✅ Résultats & Compétences acquises</h2>
+<ul>
+<li>✔️ Infrastructure réseau <strong>Windows Server + Linux</strong> pleinement fonctionnelle</li>
+<li>✔️ <strong>Active Directory</strong> opérationnel avec gestion des droits</li>
+<li>✔️ Services DHCP, DNS, GPO, LAMP et FTP <strong>validés</strong></li>
+<li>✔️ Maîtrise de l'administration <strong>Windows Server & Linux</strong></li>
+<li>✔️ Utilisation de <strong>PowerShell</strong> pour l'automatisation</li>
+</ul>
+<p style="margin-top:1rem;color:#475569;font-style:italic;">Cette expérience a consolidé mes bases en infrastructure réseau et m'a préparé aux missions que j'effectue en alternance.</p></div>
+<button class="back-btn" onclick="closePage('page-logesaca')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+
+<!-- PAGE CW91 -->
+<div class="project-page" id="page-cw91">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-cw91')">&#8592; Retour au Portfolio</button>
+<h1>Projet CW91 &#127760;</h1>
+<p class="psub">Site Web Dynamique avec Base de Données</p>
+<div class="piz"><img src="images/cw_main/cwlogo1.png" alt="CW91" style="max-width:100%;max-height:400px;object-fit:contain;border-radius:10px;"></div>
+<div class="ps"><h2>&#128203; Présentation</h2><p>CW91 est un projet de développement web réalisé dans le cadre du BTS SIO. Site web dynamique permettant la gestion de données via une interface moderne et intuitive.</p></div>
+<div class="ps"><h2>&#127919; Objectifs</h2><ul><li>Concevoir et développer une application web fonctionnelle</li><li>Mettre en place une base de données relationnelle</li><li>Implémenter un système d'authentification sécurisé</li><li>Créer une interface utilisateur responsive</li><li>Respecter les bonnes pratiques MVC et sécurité</li></ul></div>
+<div class="ps"><h2>&#128295; Technologies</h2><div class="tt"><span class="t">PHP</span><span class="t">MySQL</span><span class="t">HTML5 / CSS3</span><span class="t">JavaScript</span><span class="t">Bootstrap</span><span class="t">Apache</span></div></div>
+<div class="pig"><div class="piz"><img src="images/cw_main/cwlogo1.png" alt="CW91 interface" style="max-width:100%;max-height:300px;object-fit:contain;border-radius:10px;"></div><div class="piz"><img src="images/cw_main/cwlogo2.png" alt="CW91 BDD" style="max-width:100%;max-height:300px;object-fit:contain;border-radius:10px;"></div></div>
+<div class="ps"><h2>&#9881;&#65039; Réalisation</h2><ul><li><strong>Conception BDD</strong> : modélisation MCD/MLD, tables et relations</li><li><strong>Backend PHP</strong> : architecture MVC, requêtes sécurisées (PDO)</li><li><strong>Interface responsive</strong> avec Bootstrap et formulaires interactifs</li><li><strong>Authentification</strong> : inscription/connexion avec bcrypt</li><li><strong>CRUD complet</strong> : création, lecture, modification, suppression</li><li><strong>Sécurisation</strong> : injection SQL, XSS, CSRF</li></ul></div>
+<div class="ps"><h2>&#9989; Compétences acquises</h2><ul><li>Maîtrise du PHP orienté objet et MySQL</li><li>Développement d'interfaces responsives</li><li>Sécurité web (OWASP Top 10)</li><li>Versioning avec Git/GitHub</li></ul></div>
+<button class="back-btn" onclick="closePage('page-cw91')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+<!-- PAGE GSB -->
+<div class="project-page" id="page-gsb">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-gsb')">&#8592; Retour au Portfolio</button>
+<h1>Projet GSB 💊</h1>
+<p class="psub">Application web de gestion des frais — Galaxy Swiss Bourdin — BTS SIO SISR</p>
+<div class="piz"><img src="images/gsb_main/gsblogo2.png" alt="GSB Application" style="max-width:100%;max-height:400px;object-fit:contain;border-radius:12px;"></div>
+<div class="ps"><h2>📌 Présentation du projet</h2>
+<p>Le projet GSB est une <strong>application web de gestion des frais professionnels</strong> pour le laboratoire pharmaceutique fictif <em>Galaxy Swiss Bourdin</em>. Suite à une fusion entre deux groupes pharmaceutiques, le laboratoire souhaitait uniformiser la gestion des frais de ses visiteurs médicaux via une application interne.</p></div>
+<div class="ps"><h2>🌍 Contexte et objectifs</h2>
+<p>L'application est destinée à deux types d'utilisateurs :</p>
+<ul>
+<li><strong>Visiteurs médicaux :</strong> saisir leurs frais de déplacement, restauration et hébergement</li>
+<li><strong>Comptables :</strong> contrôler, valider et mettre en paiement les fiches de frais</li>
+</ul>
+<p>L'objectif était de permettre un suivi complet de la saisie jusqu'au remboursement (états : créée → validée → mise en paiement → remboursée).</p></div>
+<div class="ps"><h2>🛠️ Technologies utilisées</h2>
+<div class="tt"><span class="t">PHP</span><span class="t">MySQL</span><span class="t">HTML5</span><span class="t">CSS3</span><span class="t">Architecture MVC</span><span class="t">Apache</span><span class="t">SQL</span></div></div>
+<div class="ps"><h2>⚙️ Réalisation et missions</h2>
+<ul>
+<li><strong>Analyse :</strong> Lecture et compréhension du cahier des charges GSB, identification des cas d'utilisation.</li>
+<li><strong>Côté visiteur :</strong> Interface de saisie des frais forfaitaires (kilométrique, repas, nuit) et hors forfait.</li>
+<li><strong>Côté comptable :</strong> Interface de validation et mise en paiement des fiches de frais.</li>
+<li><strong>Base de données :</strong> Conception et implémentation de la BDD MySQL (tables visiteurs, fiches, frais...).</li>
+<li><strong>Tests :</strong> Jeux d'essai, vérification des traitements, correction des anomalies.</li>
+</ul></div>
+<div class="ps"><h2>✅ Résultats & Compétences acquises</h2>
+<ul>
+<li>✔️ Application web <strong>fonctionnelle</strong> avec authentification</li>
+<li>✔️ Interface visiteur : saisie et suivi des frais</li>
+<li>✔️ Interface comptable : validation et remboursement</li>
+<li>✔️ Développement web <strong>PHP/MySQL</strong> en architecture MVC</li>
+<li>✔️ Conception et gestion de <strong>base de données</strong></li>
+</ul></div>
+<button class="back-btn" onclick="closePage('page-gsb')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+
+<!-- PAGE ALTERNANCE -->
+<div class="project-page" id="page-alternance">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-alternance')">&#8592; Retour au Portfolio</button>
+<h1>Projets en Alternance 🏛️</h1>
+<p class="psub">Direction des Systèmes d'Information — Mairie de Grigny</p>
+<div class="piz"><img src="images/alternance/logo_mairie.png" alt="Mairie de Grigny" style="max-width:100%;max-height:300px;object-fit:contain;border-radius:10px;padding:1rem;"></div>
+
+<div class="ps"><h2>📍 Présentation de la structure</h2>
+<p>La <strong>Mairie de Grigny</strong> est une collectivité territoriale située dans l'Essonne (91350), à environ 25 km au sud de Paris, comptant près de <strong>30 000 habitants</strong> et environ <strong>800 agents municipaux</strong>. Elle fait partie de l'agglomération <strong>Grand Paris Sud Seine-Essonne-Sénart</strong>.</p>
+<p>La <strong>Direction des Systèmes d'Information (DSI)</strong> assure le support informatique de l'ensemble des services municipaux, dont plusieurs établissements scolaires. Elle gère en interne l'assistance aux utilisateurs, la gestion des tickets via <strong>GLPI</strong> et le maintien en condition opérationnelle de toute l'infrastructure — postes fixes, ordinateurs portables, tablettes et équipements réseau.</p></div>
+
+<div class="ps"><h2>⚠️ Problématique</h2>
+<p>Le service faisait face à un <strong>volume important de matériel à préparer</strong> dans le cadre du renouvellement du parc scolaire, tout en maintenant un niveau de support quotidien satisfaisant pour les agents municipaux. La gestion simultanée des déploiements et du support nécessitait <strong>organisation et réactivité</strong>.</p></div>
+
+<div class="ps"><h2>🛠️ Missions réalisées</h2>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">📦 Projet 1 — Déploiement de postes informatiques</h3>
+<p>Installation OS Windows, configuration des profils utilisateurs, installation des logiciels métier, jonction au domaine <strong>Active Directory</strong>. Tests de validation avant remise aux utilisateurs. Gestion des droits d'accès via l'annuaire AD.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">📱 Projet 2 — Gestion de tablettes scolaires</h3>
+<p>Configuration des tablettes avec profils <strong>MDM</strong> (restrictions d'usage, applications éducatives, filtrage de contenus), préparation des lots destinés aux écoles, étiquetage et inventaire du parc. Prise en compte des contraintes liées aux utilisateurs mineurs.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">🎧 Projet 3 — Support technique & gestion des tickets</h3>
+<p>Prise en charge des tickets de support via <strong>GLPI</strong>, diagnostic et résolution de pannes matérielles et logicielles, accompagnement des agents, escalade des incidents N2. Rédaction de comptes rendus d'intervention et mise à jour de la documentation.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">💻 Projet 4 — Administration système et réseau</h3>
+<p>Gestion et inventaire du parc informatique, administration système de base (comptes AD, mises à jour, antivirus), vérification de la connectivité réseau, remise à niveau logicielle des ordinateurs portables pour redistribution.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">🔒 Projet 5 — Campagne de sensibilisation au phishing</h3>
+<p>Conception et envoi d'un faux email de phishing pour tester la vigilance des agents. Analyse des résultats (taux de clics 35% → 12% après sensibilisation). Création de supports de formation et ateliers de sensibilisation.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">⚡ Projet 6 — Scripts PowerShell d'automatisation</h3>
+<p>Développement de scripts PowerShell pour automatiser les tâches répétitives : sauvegarde automatique, création de comptes AD en masse, rapports d'activité. Gain estimé : <strong>5h/semaine</strong>.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">📧 Projet 7 — Vade Secure — Sécurisation des mails</h3>
+<p>Mise en place et administration de la solution <strong>Vade Secure</strong> pour filtrer et sécuriser les emails des agents contre le spam, le phishing et les malwares.</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">🔐 Projet 8 — Mise en place d'un VPN</h3>
+<p>Déploiement d'une solution VPN pour permettre l'accès sécurisé au réseau municipal depuis l'extérieur (télétravail, accès distant des agents).</p>
+
+<h3 style="color:#2563eb;margin:1.5rem 0 0.8rem;">📽️ Projet 9 — Installation de vidéoprojecteurs connectés</h3>
+<p>Installation et configuration de vidéoprojecteurs connectés au réseau, paramétrage réseau et guide utilisateur à destination des agents.</p>
+</div>
+
+<div class="ps"><h2>💼 Mes missions au quotidien</h2>
+<ul>
+<li>Gestion de tickets via <strong>GLPI</strong> : traitement quotidien des demandes</li>
+<li>Support utilisateurs en <strong>présentiel et à distance</strong></li>
+<li>Administration <strong>Active Directory</strong> : comptes, groupes, droits</li>
+<li>Déploiement de postes de travail : installation, configuration, migration</li>
+<li>Maintenance serveurs <strong>Windows Server</strong> et <strong>Linux</strong></li>
+<li>Documentation technique : procédures, base de connaissances</li>
+<li>Participation au <strong>PRA/PCA</strong> : tests de restauration, continuité de service</li>
+</ul></div>
+
+<div class="ps"><h2>🎯 Compétences mobilisées</h2>
+<p>Vision concrète du fonctionnement d'une <strong>DSI publique</strong> avec ses contraintes budgétaires et ses exigences de service public. Autonomie sur les tâches techniques en respectant les procédures du service, adaptation de la communication selon le profil des interlocuteurs.</p>
+<div class="tt"><span class="t">Active Directory</span><span class="t">Windows Server</span><span class="t">GLPI</span><span class="t">MDM Tablettes</span><span class="t">Gestion de parc</span><span class="t">Support utilisateurs</span><span class="t">PowerShell</span><span class="t">Vade Secure</span><span class="t">VPN</span><span class="t">Documentation technique</span></div></div>
+
+<button class="back-btn" onclick="closePage('page-alternance')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+
+<!-- MENTIONS LÉGALES -->
+<div class="mov" id="mov">
+<div class="mbox">
+<button class="mcl" onclick="closeMentions()">&#10005;</button>
+<h2>&#9878;&#65039; Mentions Légales</h2>
+<p><strong>Responsable :</strong> Adam AZZI — Étudiant BTS SIO option SISR</p>
+<p><strong>Formation :</strong> BTS SIO SISR — Lycée Parc des Loges, Évry</p>
+<p><strong>Alternance :</strong> Mairie de Grigny — Service Informatique</p>
+<p><strong>Contact :</strong> <a href="mailto:adam.azzi13@gmail.com" style="color:var(--accent);">adam.azzi13@gmail.com</a></p>
+<p><strong>Propriété intellectuelle :</strong> L'ensemble du contenu est la propriété d'Adam AZZI. Toute reproduction sans autorisation est interdite.</p>
+<p><strong>Données personnelles :</strong> Ce site ne collecte aucune donnée personnelle à des fins commerciales.</p>
+<p><strong>Cookies :</strong> Ce site n'utilise pas de cookies de tracking.</p>
+<p style="font-size:0.9rem;margin-top:1rem;">&#169; 2025 Adam AZZI &#8212; Tous droits réservés</p>
+</div></div>
+
+
+<!-- PAGE RASPBERRY PI FTP -->
+<div class="project-page" id="page-raspberry">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-raspberry')">&#8592; Retour au Portfolio</button>
+<h1>Projet Raspberry Pi 🍓</h1>
+<p class="psub">Mise en place d'un serveur FTP — BTS SIO SISR</p>
+<div class="piz" style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+<img src="images/raspberry/rpblogo1.png" alt="Raspberry Pi Setup" style="max-width:48%;max-height:320px;object-fit:contain;border-radius:12px;">
+<img src="images/raspberry/rpblogo2.png" alt="FileZilla FTP" style="max-width:48%;max-height:320px;object-fit:contain;border-radius:12px;">
+</div>
+<div class="ps"><h2>📌 Présentation du projet</h2>
+<p>L'objectif de cette réalisation est la <strong>mise en place d'un serveur FTP sur un Raspberry Pi</strong> afin de permettre l'échange de fichiers entre un serveur et des postes clients du réseau local. Réalisé <strong>seul</strong> en laboratoire SISR au lycée, dans le cadre de l'épreuve E6 du BTS SIO SISR.</p></div>
+<div class="ps"><h2>🎯 Résultats attendus</h2>
+<ul>
+<li>Serveur FTP <strong>opérationnel et accessible</strong> sur le réseau local</li>
+<li><strong>Authentification utilisateur</strong> fonctionnelle</li>
+<li><strong>Transfert de fichiers bidirectionnel</strong> validé (PC ↔ Raspberry)</li>
+</ul></div>
+<div class="ps"><h2>🛠️ Matériel & Logiciels utilisés</h2>
+<p><strong>Matériel :</strong> Raspberry Pi, carte SD 16 Go, alimentation, câble Ethernet, PC client, câble HDMI/VGA</p>
+<div class="tt" style="margin-top:0.8rem;"><span class="t">Raspberry Pi OS</span><span class="t">ProFTPD</span><span class="t">FileZilla</span><span class="t">SSH</span><span class="t">Ping</span><span class="t">Ethernet</span></div></div>
+<div class="ps"><h2>⚙️ Étapes de réalisation</h2>
+<ul>
+<li><strong>1. Installation OS :</strong> Raspberry Pi OS (Raspbian) sur carte SD, paramétrage clavier AZERTY, langue et réseau.</li>
+<li><strong>2. Configuration réseau :</strong> Attribution IP fixe, test ping PC ↔ Raspberry, connexion SSH à distance.</li>
+<li><strong>3. Installation FTP :</strong> Installation <code>proftpd</code> via <code>apt-get</code>, démarrage et vérification du service, test via FileZilla.</li>
+<li><strong>4. Gestion utilisateurs :</strong> Création des comptes <strong>« toto »</strong> et <strong>« titi »</strong> avec répertoires personnels.</li>
+<li><strong>5. Tests :</strong> Connexion réussie, transfert bidirectionnel validé, vérification des droits d'accès.</li>
+</ul></div>
+<div class="ps"><h2>📊 Schéma réseau</h2>
+<div style="background:rgba(37,99,235,0.06);border:2px dashed rgba(37,99,235,0.25);border-radius:12px;padding:1.4rem;text-align:center;font-family:monospace;color:#0f172a;line-height:2;">
+PC Client (FileZilla) ←─── FTP Port 21 ───→ Raspberry Pi (ProFTPD)<br>IP fixe — même sous-réseau — Protocole Ethernet
+</div></div>
+<div class="ps"><h2>✅ Résultats & Compétences acquises</h2>
+<ul>
+<li>✔️ Serveur FTP <strong>pleinement opérationnel</strong></li>
+<li>✔️ Transfert de fichiers validé dans les <strong>deux sens</strong></li>
+<li>✔️ Maîtrise de la <strong>configuration système et réseau Linux</strong></li>
+<li>✔️ Installation et supervision de <strong>services réseau</strong></li>
+<li>✔️ Administration à distance via <strong>SSH</strong></li>
+</ul>
+<p style="font-style:italic;color:var(--accent);margin-top:0.8rem;">Date du test : 23/09/2025 — Signataire : AZZI Adam ✅</p></div>
+<button class="back-btn" onclick="closePage('page-raspberry')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+
+<!-- PAGE TP-LINK VLAN -->
+<div class="project-page" id="page-tplink">
+<div class="ppi">
+<button class="back-btn" onclick="closePage('page-tplink')">&#8592; Retour au Portfolio</button>
+<h1>Projet TP-Link 🌐</h1>
+<p class="psub">Configuration d'un routeur TP-Link TL-R470T+ — BTS SIO SISR</p>
+<div class="ps"><h2>📌 Présentation du projet</h2>
+<p>Ce projet consiste à <strong>configurer un routeur TP-Link TL-R470T+</strong> afin d'assurer l'interconnexion entre un réseau local (LAN) et un réseau externe (WAN), avec mise en place du routage et du DHCP.</p></div>
+<div class="ps"><h2>🎯 Objectifs</h2>
+<ul>
+<li>Connecter un réseau <strong>LAN à un WAN</strong> et configurer le routage IP</li>
+<li>Mettre en place un <strong>serveur DHCP</strong> sur le routeur</li>
+<li>Tester la connectivité et valider l'accès Internet</li>
+</ul></div>
+<div class="ps"><h2>🛠️ Technologies utilisées</h2>
+<div class="tt"><span class="t">TP-Link TL-R470T+</span><span class="t">DHCP</span><span class="t">Routage IP</span><span class="t">Interface web admin</span><span class="t">Ping</span><span class="t">ipconfig</span></div></div>
+<div class="ps"><h2>⚙️ Réalisation</h2>
+<ul>
+<li>Accès à l'<strong>interface web</strong> d'administration du routeur</li>
+<li>Configuration des interfaces <strong>LAN / WAN</strong></li>
+<li>Mise en place du <strong>routage</strong> entre les réseaux</li>
+<li>Activation et configuration du <strong>DHCP</strong></li>
+<li>Tests réseau : ping, ipconfig, vérification accès Internet</li>
+</ul></div>
+<div class="ps"><h2>✅ Résultats & Compétences acquises</h2>
+<ul>
+<li>✔️ Réseau <strong>fonctionnel</strong> LAN ↔ WAN</li>
+<li>✔️ Attribution automatique des <strong>adresses IP</strong></li>
+<li>✔️ Accès Internet <strong>validé</strong></li>
+<li>✔️ Configuration d'<strong>équipements réseau</strong></li>
+<li>✔️ Administration via <strong>interface web</strong></li>
+</ul></div>
+<button class="back-btn" onclick="closePage('page-tplink')">&#8592; Retour au Portfolio</button>
+</div></div>
+
+
+
+
+<!-- PORTFOLIO PRINCIPAL -->
+<div id="main-portfolio">
+<nav><ul>
+<li><a href="#accueil">Accueil</a></li>
+<li><a href="#apropos">&#192; Propos</a></li>
+<li><a href="#competences">Comp&#233;tences</a></li>
+<li><a href="#parcours">Parcours</a></li>
+<li><a href="#projets">Projets</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#veille">Veille</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul></nav>
+
+<!-- HERO espace réduit -->
+<section id="accueil" class="hero">
+<div class="hero-content">
+<h1 class="hero-title">ADAM AZZI</h1>
+<h2 class="hero-sub">Étudiant BTS SIO — Option SISR</h2>
+<p class="hero-desc">Passionné par les systèmes et réseaux informatiques, je suis actuellement en alternance à la Mairie de Grigny où je développe mes compétences en infrastructure IT et administration système.</p>
+<div class="tip-wrap"><span class="tip">Envoyer un message</span><a href="#contact" class="cta">Me Contacter</a></div>
+</div></section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+<h2 class="stitle">À Propos de Moi &#128172;</h2>
+<div class="about-content fi">
+<div class="atext">
+<p>Bonjour, moi c'est <strong>Adam AZZI</strong> &#128075;<br>J'ai <strong>19 ans</strong> et je suis actuellement étudiant en <strong>2ème année de BTS SIO</strong> (Services Informatiques aux Organisations) en <strong>alternance</strong> à la <strong>Mairie de Grigny</strong>.</p>
+<p>Mon parcours : première année en <strong>formation initiale</strong> au <strong>Lycée Louis Armand à Paris</strong> avec un <strong>stage de 5 semaines</strong>, conclu par une <strong>proposition d'alternance</strong>, ce qui témoigne de mon engagement et de mes compétences.</p>
+<p>Actuellement, je suis au <strong>Lycée Parc des Loges à Évry</strong> et je travaille chaque jour à développer mes compétences en infrastructure, réseaux et systèmes informatiques.</p>
+<p>Le <strong>BTS SIO</strong> représente pour moi <strong>le début de mes études supérieures</strong> en informatique. Cette formation me permet d'acquérir des bases solides pour <strong>la poursuite de mes études</strong> et ma future carrière.</p>
+<!-- BOUTON CV avec bulle "Curriculum Vitae" -->
+<div class="cvwrap" style="margin-top:0.5rem;">
+  <span class="cvtt">Curriculum Vitae</span>
+  <a href="cv_viewer.html" class="cvbtn" id="cv-link">&#128196; Voir / Télécharger mon CV</a>
+</div>
+</div>
+<div class="pcard fi">
+<div class="pinfo">
+<div class="tip-wrap" style="display:block;"><span class="tip">Services Informatiques aux Organisations</span><div class="iitem"><div class="iico">&#127891;</div><div><div class="ilbl">Formation</div><div class="ival">BTS SIO 2ème année</div></div></div></div>
+<div class="iitem"><div class="iico">&#128188;</div><div><div class="ilbl">Alternance</div><div class="ival">Mairie de Grigny</div></div></div>
+<div class="iitem"><div class="iico">&#127979;</div><div><div class="ilbl">École</div><div class="ival">Lycée Parc des Loges</div></div></div>
+<div class="iitem"><div class="iico">&#128205;</div><div><div class="ilbl">Localisation</div><div class="ival">Évry, France</div></div></div>
+<div class="tip-wrap" style="display:block;"><span class="tip">Solutions Infrastructure Systèmes &amp; Réseaux</span><div class="iitem"><div class="iico">&#127919;</div><div><div class="ilbl">Spécialité</div><div class="ival">SISR</div></div></div></div>
+</div></div></div>
+
+<div class="btsinfo fi">
+<h3>Qu'est-ce que le BTS SIO ? &#127891;</h3>
+<p>Le <strong>BTS SIO</strong> est une formation en deux ans qui permet d'acquérir des compétences solides pour intégrer le marché du travail ou poursuivre des études supérieures en informatique.</p>
+<div class="opth">
+<h4>Option SISR — Solutions d'Infrastructure, Systèmes et Réseaux &#128187;</h4>
+<p>L'option <strong>SISR</strong> forme des professionnels spécialisés dans les <strong>réseaux</strong> et les <strong>équipements informatiques</strong>.</p>
+<ul style="color:var(--text);line-height:2;margin-top:1rem;margin-left:2rem;">
+<li><strong>Installer et configurer</strong> des infrastructures réseau</li>
+<li><strong>Administrer</strong> les systèmes et serveurs</li>
+<li>Assurer la <strong>sécurité</strong> des systèmes d'information</li>
+<li>Gérer la <strong>maintenance</strong> et le <strong>support technique</strong></li>
+<li>Mettre en place des solutions de <strong>virtualisation</strong></li>
+<li>Gérer les <strong>sauvegardes</strong> et la <strong>continuité de service</strong></li>
+</ul>
+<p style="margin-top:1.5rem;">Métiers : <strong>Administrateur systèmes et réseaux</strong>, <strong>Technicien infrastructure</strong>, <strong>Support systèmes et réseaux</strong>, <strong>Responsable sécurité</strong>...</p>
+</div>
+
+</div></div></section>
+
+<!-- COMPÉTENCES -->
+<section id="competences" style="padding:5rem 2rem;max-width:100%;margin:0;background:#f8fafc;">
+<div style="max-width:1200px;margin:0 auto;">
+<h2 class="stitle">Mes Compétences Techniques 💻</h2>
+<p class="comp-intro">Découvrez mes compétences techniques acquises à travers ma formation BTS SIO SISR et mes<br>expériences professionnelles en administration système et réseau</p>
+
+<!-- BLOC 1 : Support et mise à disposition -->
+<div class="comp-section fi">
+<div class="comp-section-header">
+<div class="comp-section-icon">🔧</div>
+<h3 class="comp-section-title">Support et mise à disposition des services informatiques</h3>
+</div>
+<div class="comp-grid">
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/windows-10.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Windows Server">
+<div class="comp-logo-emoji" style="display:none;">🖥️</div>
+<span class="comp-name">Windows Server</span>
+</div>
+<p class="comp-desc">Compétence acquise en BTS SIO SISR via des TP et projets. Installation et configuration de services AD et DHCP sur des VM.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/windows-11.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Windows 11">
+<div class="comp-logo-emoji" style="display:none;">🖥️</div>
+<span class="comp-name">Windows 11</span>
+</div>
+<p class="comp-desc">Expérience personnelle et en environnement de test. Installation, configuration système, gestion des comptes utilisateurs et dépannage.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/windows-10.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Windows 10">
+<div class="comp-logo-emoji" style="display:none;">🖥️</div>
+<span class="comp-name">Windows 10</span>
+</div>
+<p class="comp-desc">Expérience personnelle et en environnement de test. Installation, configuration système, gestion des comptes utilisateurs et dépannage.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/linux.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Linux">
+<div class="comp-logo-emoji" style="display:none;">🐧</div>
+<span class="comp-name">Linux</span>
+</div>
+<p class="comp-desc">Autoformation et BTS : installation/configuration sur Debian, Arch Linux et Ubuntu. Expérience sur dual boot et environnements virtualisés.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/active-directory.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="GLPI">
+<div class="comp-logo-emoji" style="display:none;">🎫</div>
+<span class="comp-name">GLPI</span>
+</div>
+<p class="comp-desc">Utilisé dans le cadre du BTS. Installation, configuration de base, gestion des tickets et inventaire de parc informatique simulé.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/microsoft-active-directory.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Active Directory">
+<div class="comp-logo-emoji" style="display:none;">🗂️</div>
+<span class="comp-name">Active Directory</span>
+</div>
+<p class="comp-desc">Manipulation dans des environnements de TP. Création de comptes, groupes, stratégies de sécurité et GPO.</p>
+</div>
+
+</div></div>
+
+<!-- BLOC 2 : Administration systèmes et réseaux -->
+<div class="comp-section fi">
+<div class="comp-section-header">
+<div class="comp-section-icon">🌐</div>
+<h3 class="comp-section-title">Administration des systèmes et des réseaux</h3>
+</div>
+<div class="comp-grid">
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/proxmox.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Proxmox">
+<div class="comp-logo-emoji" style="display:none;">⚙️</div>
+<span class="comp-name">Proxmox</span>
+</div>
+<p class="comp-desc">Virtualisation de serveurs via Proxmox durant les projets de BTS. Création de VM, configuration de clusters, snapshots.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/cisco.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Cisco">
+<div class="comp-logo-emoji" style="display:none;">🔌</div>
+<span class="comp-name">Cisco</span>
+</div>
+<p class="comp-desc">TP sur Packet Tracer en BTS SIO SISR : configuration de routeurs, VLAN, adressage IP, routage statique/dynamique.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/vmware.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="VMware">
+<div class="comp-logo-emoji" style="display:none;">☁️</div>
+<span class="comp-name">VMware</span>
+</div>
+<p class="comp-desc">Utilisé pour la virtualisation d'environnements Windows/Linux lors de projets personnels et en laboratoire scolaire.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/virtualbox.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="VirtualBox">
+<div class="comp-logo-emoji" style="display:none;">📦</div>
+<span class="comp-name">VirtualBox</span>
+</div>
+<p class="comp-desc">Utilisé pour la virtualisation d'environnements Windows/Linux lors de projets personnels et en laboratoire scolaire.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/mysql.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="MySQL">
+<div class="comp-logo-emoji" style="display:none;">🗄️</div>
+<span class="comp-name">MySQL</span>
+</div>
+<p class="comp-desc">Manipulation via projets Web et TP SQL. Création de bases de données, gestion des utilisateurs, sécurisation.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<div class="comp-logo-emoji">🌐</div>
+<span class="comp-name">DNS</span>
+</div>
+<p class="comp-desc">TP BTS : configuration de zones DNS, résolution de noms, intégration avec Active Directory.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<div class="comp-logo-emoji">📡</div>
+<span class="comp-name">DHCP</span>
+</div>
+<p class="comp-desc">Mis en place sur Windows Server et Debian en TP pour l'attribution automatique d'adresses IP.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/wireshark.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Wireshark">
+<div class="comp-logo-emoji" style="display:none;">🔍</div>
+<span class="comp-name">Wireshark</span>
+</div>
+<p class="comp-desc">Analyse de trames réseau en TP. Capture et inspection de paquets TCP/IP pour le diagnostic réseau.</p>
+</div>
+
+</div></div>
+
+<!-- BLOC 3 : Sécurité -->
+<div class="comp-section fi">
+<div class="comp-section-header">
+<div class="comp-section-icon">🔒</div>
+<h3 class="comp-section-title">Cybersécurité et protection des systèmes</h3>
+</div>
+<div class="comp-grid">
+
+<div class="comp-card">
+<div class="comp-card-header">
+<div class="comp-logo-emoji">🛡️</div>
+<span class="comp-name">Pare-feu</span>
+</div>
+<p class="comp-desc">Configuration de règles de filtrage réseau. Mise en place de politiques de sécurité sur Windows et Linux.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<div class="comp-logo-emoji">🎣</div>
+<span class="comp-name">Anti-Phishing</span>
+</div>
+<p class="comp-desc">Campagne de sensibilisation en alternance à la Mairie de Grigny. Simulation d'attaque et formation des agents.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<div class="comp-logo-emoji">💾</div>
+<span class="comp-name">Sauvegardes</span>
+</div>
+<p class="comp-desc">Mise en place de stratégies de sauvegarde et restauration. Scripts PowerShell automatisés en alternance.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/password.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="GPO">
+<div class="comp-logo-emoji" style="display:none;">🔑</div>
+<span class="comp-name">GPO</span>
+</div>
+<p class="comp-desc">Déploiement de stratégies de groupe pour sécuriser les postes et imposer des politiques de mots de passe.</p>
+</div>
+
+</div></div>
+
+<!-- BLOC 4 : Scripting -->
+<div class="comp-section fi">
+<div class="comp-section-header">
+<div class="comp-section-icon">⚙️</div>
+<h3 class="comp-section-title">Scripting et automatisation</h3>
+</div>
+<div class="comp-grid">
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/powershell.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="PowerShell">
+<div class="comp-logo-emoji" style="display:none;">💻</div>
+<span class="comp-name">PowerShell</span>
+</div>
+<p class="comp-desc">Scripts d'automatisation en alternance : création de comptes AD en masse, sauvegardes, rapports. Gain de 5h/semaine.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/bash.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Bash">
+<div class="comp-logo-emoji" style="display:none;">🖥️</div>
+<span class="comp-name">Bash</span>
+</div>
+<p class="comp-desc">Scripts shell sur Linux pour automatisation de tâches répétitives, gestion de fichiers et maintenance système.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/git.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="Git">
+<div class="comp-logo-emoji" style="display:none;">📝</div>
+<span class="comp-name">Git / GitHub</span>
+</div>
+<p class="comp-desc">Versioning de projets, gestion de branches, commits. Utilisé pour les projets web et les scripts d'automatisation.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/visual-studio-code-2019.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="VS Code">
+<div class="comp-logo-emoji" style="display:none;">💻</div>
+<span class="comp-name">VS Code</span>
+</div>
+<p class="comp-desc">Éditeur principal pour le développement web, les scripts PowerShell/Bash et la gestion de projets.</p>
+</div>
+
+</div></div>
+
+<!-- BLOC 5 : Développement web -->
+<div class="comp-section fi">
+<div class="comp-section-header">
+<div class="comp-section-icon">🌍</div>
+<h3 class="comp-section-title">Développement web</h3>
+</div>
+<div class="comp-grid">
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/html-5--v1.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="HTML5">
+<div class="comp-logo-emoji" style="display:none;">🌐</div>
+<span class="comp-name">HTML / CSS</span>
+</div>
+<p class="comp-desc">Développement de pages web structurées et responsive. Projets GSB et CW91 en BTS SIO.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/php.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="PHP">
+<div class="comp-logo-emoji" style="display:none;">🐘</div>
+<span class="comp-name">PHP</span>
+</div>
+<p class="comp-desc">Développement backend avec architecture MVC, PDO sécurisé, gestion de sessions et authentification.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/javascript--v1.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="JavaScript">
+<div class="comp-logo-emoji" style="display:none;">⚡</div>
+<span class="comp-name">JavaScript</span>
+</div>
+<p class="comp-desc">Scripts d'interactivité, manipulation du DOM, validation de formulaires côté client.</p>
+</div>
+
+<div class="comp-card">
+<div class="comp-card-header">
+<img class="comp-logo" src="https://img.icons8.com/color/48/mysql.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" alt="SQL">
+<div class="comp-logo-emoji" style="display:none;">🗄️</div>
+<span class="comp-name">SQL</span>
+</div>
+<p class="comp-desc">Requêtes complexes, jointures, procédures stockées. Conception de bases de données relationnelles.</p>
+</div>
+
+</div></div>
+
+</div>
+</section>
+
+<!-- PARCOURS -->
+<section id="parcours">
+<h2 class="stitle">Mon Parcours 🎯</h2>
+<div class="parc-grid">
+
+<div class="parc-card current fi">
+<div class="parc-header"><div class="parc-icon">🏛️</div>
+<div class="parc-title-block"><div class="parc-title">BTS SIO — SISR (2ème année)</div>
+<div class="parc-lieu">Lycée Parc des Loges — Évry</div></div></div>
+<div><span class="parc-badge-date"><span class="parc-now-dot"></span>Sept. 2025 — Aujourd'hui</span>
+<span class="parc-badge-type">🔄 Alternance</span></div>
+<p class="parc-desc">2ème année de BTS SIO en alternance. Approfondissement des compétences en infrastructure, sécurité et administration système.</p>
+</div>
+
+<div class="parc-card current fi">
+<div class="parc-header"><div class="parc-icon">💼</div>
+<div class="parc-title-block"><div class="parc-title">Technicien Systèmes &amp; Réseaux</div>
+<div class="parc-lieu">Mairie de Grigny — DSI</div></div></div>
+<div><span class="parc-badge-date"><span class="parc-now-dot"></span>Sept. 2025 — Aujourd'hui</span>
+<span class="parc-badge-type">🔄 Alternance</span></div>
+<p class="parc-desc">Déploiement de postes, gestion de parc, support utilisateurs via GLPI, administration AD, VPN, Vade Secure et cybersécurité.</p>
+</div>
+
+<div class="parc-card fi">
+<div class="parc-header"><div class="parc-icon">📋</div>
+<div class="parc-title-block"><div class="parc-title">Stage — Technicien Informatique</div>
+<div class="parc-lieu">Mairie de Grigny</div></div></div>
+<div><span class="parc-badge-date">📅 Mai 2025 — Juin 2025</span>
+<span class="parc-badge-type">Stage</span></div>
+<p class="parc-desc">Stage de 5 semaines conclu par une <strong>proposition d'alternance</strong>, témoignant de mon implication et de mes compétences.</p>
+</div>
+
+<div class="parc-card fi">
+<div class="parc-header"><div class="parc-icon">🎓</div>
+<div class="parc-title-block"><div class="parc-title">BTS SIO — SISR (1ère année)</div>
+<div class="parc-lieu">Lycée Louis Armand — Paris</div></div></div>
+<div><span class="parc-badge-date">📅 Sept. 2024 — Juin 2025</span>
+<span class="parc-badge-type">Formation initiale</span></div>
+<p class="parc-desc">Fondamentaux en systèmes et réseaux, virtualisation, sécurité informatique et projets pratiques en laboratoire SISR.</p>
+</div>
+
+<div class="parc-card fi">
+<div class="parc-header"><div class="parc-icon">📚</div>
+<div class="parc-title-block"><div class="parc-title">Baccalauréat Général</div>
+<div class="parc-lieu">Lycée Hélène Boucher — Paris 20ème</div></div></div>
+<div><span class="parc-badge-date">📅 Sept. 2021 — Juil. 2024</span>
+<span class="parc-badge-type">Diplôme</span></div>
+<p class="parc-desc">Spécialités <strong>Mathématiques</strong> et <strong>Numérique et Sciences Informatiques (NSI)</strong> — premiers pas en programmation et algorithmique.</p>
+</div>
+
+</div>
+</section>
+
+<!-- PROJETS -->
+<section id="projets">
+<h2 class="stitle">Mes Projets Réalisés &#128640;</h2>
+<div class="pgrid">
+
+<!-- LOGESACA — logo à la place de la tour -->
+<div class="prc fi" onclick="openPage('page-logesaca')">
+<div class="primg">
+<img src="images/logesacad_main/logesacad1.png" alt="Logo LogesAcad" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="primg-fallback" style="display:none;">🏢</div>
+</div>
+<div class="prco">
+<h3 class="prt">Projet LogesAcad</h3>
+<p class="prte">Technologies : Windows Server, Active Directory, DHCP/DNS</p>
+<p class="prde">Infrastructure réseau complète avec gestion centralisée des utilisateurs et des ressources pour un établissement scolaire.</p>
+<div class="tip-wrap"><span class="tip">Infrastructure réseau scolaire</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+
+<div class="prc fi" onclick="openPage('page-cw91')">
+<div class="primg"><img src="images/cw_main/cwlogo1.png" alt="CW91" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="primg-fallback" style="display:none;">🌐</div></div>
+<div class="prco">
+<h3 class="prt">Projet CW91</h3>
+<p class="prte">Technologies : PHP, MySQL, HTML/CSS, JavaScript</p>
+<p class="prde">Application web dynamique avec base de données permettant la gestion sécurisée de données utilisateurs.</p>
+<div class="tip-wrap"><span class="tip">Application web PHP/MySQL</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+
+<div class="prc fi" onclick="openPage('page-gsb')">
+<div class="primg"><img src="images/gsb_main/gsblogo1.png" alt="GSB" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="primg-fallback" style="display:none;">💊</div></div>
+<div class="prco">
+<h3 class="prt">Projet GSB</h3>
+<p class="prte">Technologies : PHP, MySQL, Bootstrap</p>
+<p class="prde">Application métier de gestion des frais pour visiteurs médicaux avec workflow de validation complet.</p>
+<div class="tip-wrap"><span class="tip">Gestion des frais médicaux</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+
+
+<div class="prc fi" onclick="openPage('page-raspberry')">
+<div class="primg"><img src="images/raspberry/rpblogo0.png" alt="Raspberry Pi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="primg-fallback" style="display:none;">🍓</div></div>
+<div class="prco">
+<h3 class="prt">Projet Raspberry Pi</h3>
+<p class="prte">Technologies : Raspberry Pi OS, ProFTPD, FileZilla, SSH</p>
+<p class="prde">Mise en place d'un serveur FTP sur Raspberry Pi avec gestion des utilisateurs et transfert de fichiers bidirectionnel.</p>
+<div class="tip-wrap"><span class="tip">Serveur FTP Linux</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+
+<div class="prc fi" onclick="openPage('page-tplink')">
+<div class="primg">&#128268;</div>
+<div class="prco">
+<h3 class="prt">Projet TP-Link</h3>
+<p class="prte">Technologies : Switch TP-Link, VLAN 802.1Q</p>
+<p class="prde">Configuration d'un switch manageable TP-Link avec mise en place de VLANs pour segmenter le réseau.</p>
+<div class="tip-wrap"><span class="tip">Switch &amp; VLAN</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+
+
+<div class="prc fi" onclick="openPage('page-alternance')">
+<div class="primg"><img src="images/alternance/logo_mairie.png" alt="Mairie de Grigny" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="primg-fallback" style="display:none;">🏛️</div></div>
+<div class="prco">
+<h3 class="prt">Alternance — Mairie de Grigny</h3>
+<p class="prte">Windows Server · GLPI · PowerShell · Vade Secure</p>
+<p class="prde">Administration réseau, support utilisateurs, cybersécurité, VPN et gestion de parc au sein de la DSI.</p>
+<div class="tip-wrap"><span class="tip">Alternance SISR</span><button class="prob">&#128269; Voir le projet &#8594;</button></div>
+</div></div>
+</div></section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+<h2 class="stitle">Mes Certifications &#127941;</h2>
+<div class="cgrid">
+
+<div class="ccard fi">
+<span class="cbadge">Compétences numériques</span>
+<div class="cico">&#127891;</div>
+<h3 class="cname">Certification PIX</h3>
+<p class="ciss">PIX — Plateforme nationale</p>
+<p style="color:var(--text);margin-top:1rem;line-height:1.8;font-size:1.05rem;position:relative;z-index:1;">Certification des compétences numériques couvrant 5 domaines : informations et données, communication et collaboration, création de contenu, protection et sécurité, environnement numérique.</p>
+<div class="tip-wrap" style="margin-top:1.5rem;z-index:1;position:relative;"><span class="tip">Voir la Certification PIX</span><a href="certif_pix_viewer.html" class="cvbtn" style="display:inline-flex;" onclick="sessionStorage.setItem('portfolioScrollPosition', window.scrollY);">&#127891; Voir ma certification</a></div>
+</div>
+
+<div class="ccard fi">
+<span class="cbadge">Cybersécurité</span>
+<div class="cico">&#128274;</div>
+<h3 class="cname">MOOC ANSSI</h3>
+<p class="ciss">Agence Nationale de la Sécurité des Systèmes d'Information</p>
+<p style="color:var(--text);margin-top:1rem;line-height:1.8;font-size:1.05rem;position:relative;z-index:1;">Formation SecNumAcadémie de l'ANSSI sur la cybersécurité. Fondamentaux de la sécurité informatique, bonnes pratiques et protection des systèmes d'information.</p>
+<div class="tip-wrap" style="margin-top:1.5rem;z-index:1;position:relative;"><span class="tip">Voir la Certification ANSSI</span><a href="certif_anssi_viewer.html" class="cvbtn" style="display:inline-flex;" onclick="sessionStorage.setItem('portfolioScrollPosition', window.scrollY);">&#128274; Voir ma certification</a></div>
+</div>
+
+</div></section>
+
+<!-- VEILLE TECHNOLOGIQUE -->
+<section id="veille">
+<h2 class="stitle">Ma Veille Technologique &#128218;</h2>
+
+<div class="fi">
+<div class="btsinfo">
+<h3>Qu'est-ce que la veille technologique ? &#128269;</h3>
+<p>La veille technologique, élément essentiel de la veille stratégique, consiste à <strong>surveiller les évolutions techniques et les innovations</strong> dans un secteur d'activité donné. Elle comprend notamment la surveillance, la collecte, le partage et la diffusion d'informations permettant d'anticiper ou de s'informer sur des changements en matière de recherche, développement, brevets, lancement de nouveaux produits, processus, concepts, innovation de fabrication, etc.</p>
+<p>L'objectif est d'évaluer l'impact sur l'environnement et l'organisation, et de <strong>rester à jour</strong> sur les dernières tendances et technologies de mon domaine.</p>
+</div></div>
+
+<div class="vblock fi">
+<h3>&#127903;&#65039; Les Systèmes Informatiques d'un Stade Connecté</h3>
+
+<h4>&#128204; Introduction et contexte</h4>
+<p>Un <strong>smart stadium</strong> (stade connecté) combine différentes technologies pour améliorer :</p>
+<ul>
+<li>l'<strong>expérience des supporters</strong> &#128242; (applications mobiles, Wi-Fi haut débit, écrans interactifs),</li>
+<li>la <strong>sécurité</strong> &#128737;&#65039; (vidéosurveillance intelligente, contrôle d'accès),</li>
+<li>la <strong>gestion des flux</strong> &#9881;&#65039; (capteurs IoT, analyse des mouvements de foule),</li>
+<li>la <strong>monétisation des services</strong> &#128182; (billetterie numérique, cashless, merchandising).</li>
+</ul>
+<p>Tous ces services s'appuient sur une <strong>infrastructure réseau solide</strong> : Wi-Fi haute densité, fibre optique, capteurs IoT, serveurs d'applications, et des systèmes de sécurité informatique robustes.</p>
+
+<h4>&#128187; 1. Infrastructures réseau : colonne vertébrale du smart stadium</h4>
+<p><strong>&#128247; Wi-Fi et connectivité haut débit</strong></p>
+<p>Les stades modernes utilisent des <strong>réseaux Wi-Fi haute densité</strong> et de la <strong>fibre optique</strong> pour :</p>
+<ul>
+<li>supporter des <strong>dizaines de milliers d'appareils connectés simultanément</strong> (smartphones, tablettes),</li>
+<li>permettre le <strong>partage en direct</strong> de photos et vidéos sur les réseaux sociaux,</li>
+<li>permettre l'usage d'<strong>applications mobiles dédiées</strong> (programme du match, stats en temps réel, commande de nourriture).</li>
+</ul>
+<p><strong>Exemples réels :</strong></p>
+<ul>
+<li>&#9917; <strong>Signal Iduna Park (Borussia Dortmund)</strong> utilise la technologie <strong>Wi-Fi 6E</strong> avec plus de 1 200 points d'accès pour gérer la connexion de dizaines de milliers de fans.</li>
+<li>&#127463;&#127466; <strong>KAA Gent (Belgique)</strong> a déployé un réseau appelé "Connected Stadium" pour offrir une connexion fiable même avec 15 000–20 000 personnes dans l'arène.
+<a href="https://www2.telenet.be/business/fr/sme-le/inspiration/temoignages-clients/connecte-stadium-unique-pour-kaa-gent.html" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></li>
+</ul>
+
+<h4>&#127903;&#65039; 2. Billetterie numérique et applications mobiles</h4>
+<p>Les services digitaux comprennent :</p>
+<ul>
+<li><strong>billetterie entièrement numérique</strong> (QR code, wallet mobile),</li>
+<li><strong>applications mobiles</strong> pour information en temps réel (composition des équipes, statistiques),</li>
+<li>achats de nourriture, merchandising, etc.</li>
+</ul>
+<p>&#10145;&#65039; L'application mobile du <strong>Stade Toulousain</strong> permet aux supporters d'acheter et réserver leur billet, de se connecter au Wi-Fi privé du stade et de consulter les stats et vidéos en direct.
+<a href="https://www.usine-digitale.fr/article/le-stade-connecte-element-cle-de-la-strategie-marketing-du-stade-toulousain.N440342" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></p>
+<p>À noter aussi que certains stades utilisent la <strong>blockchain</strong> pour sécuriser les billets lors du contrôle d'accès.
+<a href="https://www.lemonde.fr/sport/article/2024/01/10/les-billets-dematerialises-dans-les-stades_6210277_3242.html" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></p>
+
+<h4>&#127909;&#65039; 3. Vidéo, écrans et capteurs</h4>
+<p>Les stades connectés intègrent :</p>
+<ul>
+<li><strong>écrans géants HD/4K</strong> pour affichage live,</li>
+<li><strong>caméras IP</strong> pour diffusion et analyse vidéo,</li>
+<li>systèmes de <strong>replay/VAR</strong> pour l'arbitrage sportif.</li>
+</ul>
+<p><strong>Exemple :</strong></p>
+<ul>
+<li>&#127462;&#127482; <strong>Perth Stadium</strong> dispose de plus de 1 000 écrans intégrés à l'expérience spectateur avec un réseau entièrement connecté.
+<a href="https://topfiberbox.com/stadium-fiber-optic-network-optimizes-hd-video-wifi/" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></li>
+</ul>
+
+<h4>&#128737;&#65039; 4. Sécurité numérique et surveillance</h4>
+<p>L'informatique des stades inclut aussi la <strong>sécurité informatique et physique</strong>.</p>
+<p><strong>&#128204; Technologies utilisées :</strong></p>
+<ul>
+<li><strong>caméras IP</strong> avec analyse vidéo en temps réel,</li>
+<li><strong>surveillance réseau</strong> pour détecter les menaces informatiques,</li>
+<li><strong>détection de comportements suspects</strong> grâce à l'intelligence artificielle,</li>
+<li>systèmes de <strong>contrôle d'accès sécurisés</strong> (QR code + biométrie dans certains cas).</li>
+</ul>
+<p>&#128073; Par exemple, certaines enceintes utilisent des <strong>caméras intelligentes (IA)</strong> pour améliorer la sécurité dans les parkings et zones d'accès.
+<a href="https://newsroom.axis.com/fr-be/article/slimme-technologie-voor-veiligheid-in-stadion-1" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></p>
+<p>&#9888;&#65039; <strong>Attention :</strong> la reconnaissance faciale dans certains stades fait débat sur la vie privée.
+<a href="https://www.journaldugeek.com/2024/08/22/la-reconnaissance-faciale-dans-les-stades-public-sous-surveillance/" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></p>
+
+<h4>&#127760; 5. Cas récents d'évolution technologique</h4>
+<p><strong>&#128205; Madison Square Garden (New York)</strong></p>
+<p>&#128240;&#65039; <strong>Cisco</strong> a signé un partenariat pour moderniser tout le réseau du célèbre Madison Square Garden (concerts + sports).</p>
+<p><strong>Objectif :</strong> réseau très haut débit, sécurité renforcée, et infrastructure AI-ready pour supporter de futurs services intelligents.
+<a href="https://www.itpro.com/infrastructure/networking/cisco-named-official-partner-of-madison-square-garden-in-multi-year-network-overhaul" target="_blank" class="vsrc">&#8594; Lien vers l'article</a></p>
+
+<h4>&#129309; 6. Enjeux métiers &amp; SISR</h4>
+<p>Pour un <strong>technicien SISR</strong>, un smart stadium implique des compétences en :</p>
+<ul>
+<li>&#10004;&#65039; <strong>Administration de réseaux haut débit</strong> (fibre, VLAN, Wi-Fi haute densité)</li>
+<li>&#10004;&#65039; <strong>Sécurité réseau</strong> et sécurité des données utilisateurs</li>
+<li>&#10004;&#65039; <strong>Déploiement et supervision de serveurs</strong></li>
+<li>&#10004;&#65039; <strong>Supervision de services IoT</strong> et captation vidéo</li>
+<li>&#10004;&#65039; <strong>Gestion de plateformes d'accès &amp; authentification</strong></li>
+</ul>
+<p>Ces compétences correspondent directement au référentiel du BTS SIO SISR et illustrent parfaitement comment les infrastructures IT modernes sont mises en œuvre dans des environnements complexes et à forte densité d'utilisateurs.</p>
+
+<h4>&#128204; Conclusion de ma veille</h4>
+<p>Les <strong>stades connectés</strong> représentent un excellent exemple d'application concrète des compétences SISR dans un contexte d'infrastructure à grande échelle. Ils combinent :</p>
+<ul>
+<li>&#128225; <strong>Réseaux haut débit</strong> (Wi-Fi 6E, fibre optique)</li>
+<li>&#128242; <strong>Applications mobiles</strong> et services numériques</li>
+<li>&#128202; <strong>IoT et capteurs</strong> pour la gestion des flux</li>
+<li>&#128737;&#65039; <strong>Sécurité</strong> (vidéosurveillance intelligente, contrôle d'accès)</li>
+<li>&#127909;&#65039; <strong>Multimédia</strong> (écrans géants, diffusion HD/4K)</li>
+</ul>
+<p>Cette thématique me permet de comprendre comment les infrastructures IT sont déployées dans des environnements exigeants avec des contraintes de <strong>haute disponibilité</strong>, de <strong>sécurité</strong> et de <strong>performance</strong>. Les solutions mises en œuvre dans les smart stadiums sont transposables à d'autres secteurs comme les aéroports, les centres commerciaux, ou les campus universitaires.</p>
+</div>
+
+<div style="margin-top:3rem;" class="fi">
+<h3 style="color:var(--accent);font-size:1.8rem;margin-bottom:2rem;text-align:center;">Mes Outils de Veille &#128295;</h3>
+<div class="sgrid">
+<div class="scat"><h3>&#128240; Sources d'Information</h3><ul style="list-style:none;"><li><strong>IT-Connect</strong> — Tutoriels systèmes &amp; réseaux</li><li><strong>Le Monde Informatique</strong> — Actualités IT</li><li><strong>ZDNet</strong> — Technologies &amp; cybersécurité</li><li><strong>Clubic</strong> — High-tech et innovations</li><li><strong>L'Usine Digitale</strong> — Transformation digitale</li></ul></div>
+<div class="scat"><h3>&#128276; Agrégateurs &amp; Alertes</h3><ul style="list-style:none;"><li><strong>Feedly</strong> — Agrégateur de flux RSS</li><li><strong>Google Alerts</strong> — Alertes personnalisées</li><li><strong>Reddit</strong> — r/sysadmin, r/networking</li><li><strong>Twitter/X</strong> — Experts IT et ANSSI</li><li><strong>LinkedIn</strong> — Professionnels du secteur</li></ul></div>
+<div class="scat"><h3>&#128218; Ressources Spécialisées</h3><ul style="list-style:none;"><li><strong>ANSSI</strong> — Sécurité informatique</li><li><strong>Cisco Blog</strong> — Réseaux et infrastructures</li><li><strong>Microsoft Docs</strong> — Windows Server</li><li><strong>Red Hat Blog</strong> — Linux et Open Source</li><li><strong>VMware Blog</strong> — Virtualisation</li></ul></div>
+</div></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<h2 class="stitle">Me Contacter &#9993;&#65039;</h2>
+<div class="cco">
+<div class="cinfo">
+<div class="citm fi"><div class="cico2">&#128205;</div><p class="clbl">Localisation</p><p class="cval">Paris, France</p></div>
+<div class="citm fi"><div class="cico2">&#128231;</div><p class="clbl">Email</p><p class="cval"><a href="mailto:adam.azzi13@gmail.com" style="color:var(--accent);word-break:break-all;">adam.azzi13@gmail.com</a></p></div>
+<div class="citm fi"><div class="cico2">&#128241;</div><p class="clbl">Téléphone</p><p class="cval">07 82 06 08 81</p></div>
+<div class="citm fi"><div class="cico2">&#128101;</div><p class="clbl">LinkedIn</p><p class="cval"><a href="https://www.linkedin.com/in/adam-azzi-034208329/" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">linkedin.com/in/adam-azzi</a></p></div>
+</div>
+<form class="cform fi" id="cform">
+<div class="fg"><label>Votre Nom</label><input type="text" name="name" required></div>
+<div class="fg"><label>Votre Email</label><input type="email" name="email" required></div>
+<div class="fg"><label>Sujet</label><input type="text" name="subject" required></div>
+<div class="fg"><label>Votre Message</label><textarea name="message" required></textarea></div>
+<button type="submit" class="sbtn">Envoyer le Message</button>
+</form>
+</div></section>
+
+<footer style="text-align:center;padding:2rem 1rem;max-width:100%;overflow:hidden;box-sizing:border-box;">
+<p>Copyright 2025 &#169; <strong>Adam AZZI</strong> — Portfolio BTS SIO SISR</p>
+<p style="margin-top:0.5rem;font-size:0.85rem;">Tous droits réservés</p>
+<button class="fmbtn" onclick="openMentions()">&#9878;&#65039; Mentions Légales</button>
+</footer>
+</div><!-- fin main-portfolio -->
+
+<script>
+var scrollPos = 0;
+
+window.addEventListener('scroll', function(){
+    sessionStorage.setItem('portfolioScrollPosition', window.scrollY);
+});
+
+window.addEventListener('load', function(){
+    var hash = window.location.hash;
+    if(hash && hash.indexOf('#scrollTo=') === 0){
+        var pos = parseInt(hash.replace('#scrollTo=',''));
+        if(!isNaN(pos)){
+            setTimeout(function(){ window.scrollTo({top:pos,behavior:'instant'}); history.replaceState(null,'',location.pathname); }, 80);
+        }
+        return;
+    }
+    var saved = sessionStorage.getItem('portfolioScrollPosition');
+    if(saved){
+        setTimeout(function(){ window.scrollTo({top:parseInt(saved),behavior:'instant'}); }, 80);
+    }
+});
+
+var cvLink = document.getElementById('cv-link');
+if(cvLink){ cvLink.addEventListener('click', function(){ sessionStorage.setItem('portfolioScrollPosition', window.scrollY); }); }
+
+function openPage(id){
+    scrollPos = window.scrollY;
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+    window.scrollTo(0,0);
+}
+function closePage(id){
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(function(){ window.scrollTo(0, scrollPos); }, 100);
+}
+function openMentions(){
+    scrollPos = window.scrollY;
+    document.getElementById('mov').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeMentions(){
+    document.getElementById('mov').classList.remove('active');
+    document.body.style.overflow = '';
+    setTimeout(function(){ window.scrollTo(0, scrollPos); }, 100);
+}
+document.getElementById('mov').addEventListener('click', function(e){ if(e.target===this) closeMentions(); });
+
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+        var h = this.getAttribute('href');
+        if(!h || h==='#' || h.indexOf('#scrollTo')===0) return;
+        e.preventDefault()
+        var target = document.querySelector(h);
+        if(target){ target.scrollIntoView({behavior:'smooth'}); }
+    });
+});
+
+// ── FADE-IN : tous les .fi visibles immédiatement ──
+document.querySelectorAll('.fi').forEach(function(el){
+    el.classList.add('visible');
+});
+
+</script>
+</body>
+</html>

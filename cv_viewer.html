@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Adam AZZI</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #f8fafc; overflow: hidden; }
+        #pdf-container { width: 100%; height: 100vh; display: flex; justify-content: center; align-items: center; background: #e2e8f0; }
+        iframe { width: 100%; height: 100%; border: none; }
+        .back-to-portfolio {
+            position: fixed; top: 75px; left: 20px; z-index: 9999;
+            display: flex; align-items: center; gap: 0.7rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white; border: none; border-radius: 50px;
+            font-size: 1.05rem; font-weight: 600; cursor: pointer;
+            box-shadow: 0 10px 30px rgba(37,99,235,0.4);
+            transition: all 0.3s ease; text-decoration: none;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: slideIn 0.5s ease-out;
+        }
+        .back-to-portfolio:hover { transform: translateY(-3px) scale(1.05); box-shadow: 0 15px 40px rgba(37,99,235,0.6); background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%); }
+        .back-to-portfolio::before { content: '←'; font-size: 1.3rem; font-weight: bold; }
+        @keyframes slideIn { from { opacity:0; transform:translateX(-50px); } to { opacity:1; transform:translateX(0); } }
+        .fallback-message { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); text-align: center; background: white; padding: 3rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 500px; display: none; }
+        .fallback-message h2 { color: #2563eb; margin-bottom: 1rem; }
+        .fallback-message p { color: #64748b; margin-bottom: 1.5rem; line-height: 1.6; }
+        .download-btn { display: inline-block; padding: 0.8rem 2rem; background: #2563eb; color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+
+        .cv-page-badge {
+            position: fixed; top: 75px; right: 20px; z-index: 9999;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            color: white; font-size: 0.85rem; font-weight: 700;
+            padding: 0.5rem 1.2rem; border-radius: 20px;
+            letter-spacing: 0.06em; text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(37,99,235,0.4);
+            animation: slideInRight 0.5s ease-out;
+        }
+        @keyframes slideInRight { from{opacity:0;transform:translateX(50px);}to{opacity:1;transform:translateX(0);} }
+        @media(max-width:768px){ .back-to-portfolio{top:10px;left:10px;padding:0.8rem 1.5rem;font-size:0.95rem;} }
+    </style>
+</head>
+<body>
+    <a href="portfolio_adam_azzi.html" class="back-to-portfolio" id="back-btn">Retour au Portfolio</a>
+    <span class="cv-page-badge">Curriculum Vitae</span>
+    <div id="pdf-container">
+        <iframe src="CV_Adam_AZZI.pdf" title="CV Adam AZZI" id="pdf-iframe"></iframe>
+    </div>
+    <div class="fallback-message" id="fallback">
+        <h2>📄 Télécharger le CV</h2>
+        <p>Votre navigateur ne peut pas afficher le PDF directement.</p>
+        <a href="CV_Adam_AZZI.pdf" download class="download-btn">📥 Télécharger le CV</a>
+        <p style="margin-top:1.5rem;font-size:0.9rem;"><a href="portfolio_adam_azzi.html" style="color:#2563eb;">← Retour au portfolio</a></p>
+    </div>
+    <script>
+        document.getElementById('back-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var savedPos = sessionStorage.getItem('portfolioScrollPosition');
+            if (savedPos) {
+                window.location.href = 'portfolio_adam_azzi.html#scrollTo=' + savedPos;
+            } else {
+                window.location.href = 'portfolio_adam_azzi.html';
+            }
+        });
+        document.getElementById('pdf-iframe').addEventListener('error', function() {
+            document.getElementById('fallback').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
