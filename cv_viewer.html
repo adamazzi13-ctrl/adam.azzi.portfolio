@@ -43,7 +43,7 @@
     </style>
 </head>
 <body>
-    <a href="portfolio_adam_azzi.html" class="back-to-portfolio" id="back-btn">Retour au Portfolio</a>
+    <a href="index.html" class="back-to-portfolio" id="back-btn">Retour au Portfolio</a>
     <span class="cv-page-badge">Curriculum Vitae</span>
     <div id="pdf-container">
         <iframe src="CV_Adam_AZZI.pdf" title="CV Adam AZZI" id="pdf-iframe"></iframe>
@@ -52,16 +52,16 @@
         <h2>📄 Télécharger le CV</h2>
         <p>Votre navigateur ne peut pas afficher le PDF directement.</p>
         <a href="CV_Adam_AZZI.pdf" download class="download-btn">📥 Télécharger le CV</a>
-        <p style="margin-top:1.5rem;font-size:0.9rem;"><a href="portfolio_adam_azzi.html" style="color:#2563eb;">← Retour au portfolio</a></p>
+        <p style="margin-top:1.5rem;font-size:0.9rem;"><a href="index.html" style="color:#2563eb;">← Retour au portfolio</a></p>
     </div>
     <script>
         document.getElementById('back-btn').addEventListener('click', function(e) {
             e.preventDefault();
             var savedPos = sessionStorage.getItem('portfolioScrollPosition');
             if (savedPos) {
-                window.location.href = 'portfolio_adam_azzi.html#scrollTo=' + savedPos;
+                window.location.href = 'index.html#scrollTo=' + savedPos;
             } else {
-                window.location.href = 'portfolio_adam_azzi.html';
+                window.location.href = 'index.html';
             }
         });
         document.getElementById('pdf-iframe').addEventListener('error', function() {
